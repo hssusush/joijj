@@ -1,0 +1,6 @@
+{
+  "name": "License Key Manager",
+  "description": "Software license key generation and management platform with subscriptions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

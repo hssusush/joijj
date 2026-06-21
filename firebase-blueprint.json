@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with subscription details",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "planId": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "inactive", "past_due", "canceled"] },
+        "stripeCustomerId": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["email", "planId", "status", "createdAt", "updatedAt"]
+    },
+    "LicenseKey": {
+      "title": "LicenseKey",
+      "description": "A generated license key for a user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "key": { "type": "string" },
+        "planId": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "revoked"] },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["userId", "key", "planId", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "/license_keys/{keyId}": {
+      "schema": { "$ref": "#/entities/LicenseKey" },
+      "description": "License keys generated"
+    }
+  }
+}
